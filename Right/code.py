@@ -27,7 +27,7 @@ red_led.value = True  # turn off LED
 
 # Battery set
 battery = Battery()
-print(f"Charge status (True-full chargerd, False-otherwise): {battery.charge_status}")
+print(f"Charge status (True-full charged, False-otherwise): {battery.charge_status}")
 print(f"Voltage: {battery.voltage}V")
 battery.charge_current = battery.CHARGE_100MA  # Setting charge current to high
 print(f"Charge current (0-50mA, 1-100mA): {battery.charge_current}")
@@ -42,12 +42,18 @@ scan_response.complete_name = "Right Mouse Ring"
 ble = adafruit_ble.BLERadio()
 
 # set buttons
-left_BTN_input = digitalio.DigitalInOut(board.D0)
-left_BTN_input.switch_to_input(digitalio.Pull.UP)
-left_BTN = Button(left_BTN_input)
-right_BTN_input = digitalio.DigitalInOut(board.D3)
-right_BTN_input.switch_to_input(digitalio.Pull.UP)
-right_BTN = Button(right_BTN_input)
+# left_BTN_input = digitalio.DigitalInOut(board.D0)
+# left_BTN_input.switch_to_input(digitalio.Pull.UP)
+# left_BTN = Button(left_BTN_input)
+# right_BTN_input = digitalio.DigitalInOut(board.D3)
+# right_BTN_input.switch_to_input(digitalio.Pull.UP)
+# right_BTN = Button(right_BTN_input)
+left_BTN = digitalio.DigitalInOut(board.D0)
+left_BTN.direction = Direction.INPUT
+left_BTN.pull = Pull.UP
+right_BTN = digitalio.DigitalInOut(board.D3)
+right_BTN.direction = Direction.INPUT
+right_BTN.pull = Pull.UP
 scrollup_BTN = digitalio.DigitalInOut(board.D2)
 scrollup_BTN.direction = Direction.INPUT
 scrollup_BTN.pull = Pull.UP
@@ -57,16 +63,6 @@ scrolldown_BTN.pull = Pull.UP
 
 # set mouse
 mouse = Mouse(hid.devices)
-
-def battery_status():
-    if supervisor.runtime.serial_connected:
-        if battery.charge_status is True:
-            red_led.value = False
-        else:
-            red_led.value = True
-            time.sleep(0.5)
-            red_led.value = False
-            time.sleep(0.5)
 
 while True:
     ble.start_advertising(advertisement, scan_response)
@@ -90,31 +86,31 @@ while True:
         red_led.value = True  # reset LED status
 
         # read buttons state
-        left_BTN.update()
-        right_BTN.update()
+        # left_BTN.update()
+        # right_BTN.update()
 
-        if left_BTN.pressed:
+        if left_BTN.value is False:
             mouse.click(Mouse.LEFT_BUTTON)
             print("Left Button is pressed")
             blue_led.value = True
             green_led.value = False
-        elif right_BTN.pressed:
+            time.sleep(0.2)
+        elif right_BTN.value is False:
             mouse.click(Mouse.RIGHT_BUTTON)
             print("Right Button is pressed")
             blue_led.value = True
             green_led.value = False
+            time.sleep(0.2)
         elif not scrollup_BTN.value:
             mouse.move(wheel=1)
             print("Up Button is pressed")
             blue_led.value = True
             green_led.value = False
+            time.sleep(0.1)
         elif not scrolldown_BTN.value:
             mouse.move(wheel=-1)
             print("Down Button is pressed")
             blue_led.value = True
             green_led.value = False
-        # else:
-            # print("Buttons are not pressed")
-        # battery_status()
-        time.sleep(0.1)  # sleep for debounce
+            time.sleep(0.1)
     ble.start_advertising(advertisement)
