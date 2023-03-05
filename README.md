@@ -22,7 +22,10 @@ The code was created for the need of easy mouse control with VR headset. Microco
     - simpleio.mpy
 
     Unzip downloaded library file and copy required files onto the CIRCUITPY drive into the /lib directory.
-4. To have control with battery charging current download the latest version of *[seeed_xiao_nrf52840.py](https://pypi.org/project/circuitpython-seeed-xiao-nrf52840/)* or take it from release and place directly on the CIRCUITPY drive.
+
+    >**Note**: The libraries are included in the release files but may be out of date. If you don't care about the latest versions, you can skip this step.
+4. To have control with battery charging current download the latest version of *[seeed_xiao_nrf52840.py](https://pypi.org/project/circuitpython-seeed-xiao-nrf52840/)* or take it from release and place directly on the CIRCUITPY drive. 
+    >**Note**: *seeed_xiao_nrf52840.py* is included in the release files but may be out of date. If you don't care about the latest versions, you can skip this step.
 
 ## Programming the microcontroller
 Copy the files: *code.py* onto the CIRCUITPY directly. Respectively for the left and right Ring. Reconnect device. Will be visible for Bluetooth and ready to connect.
