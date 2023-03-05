@@ -29,7 +29,7 @@ red_led.value = True  # turn off LED
 battery = Battery()
 print(f"Charge status (True-full charged, False-otherwise): {battery.charge_status}")
 print(f"Voltage: {battery.voltage}V")
-battery.charge_current = battery.CHARGE_100MA  # Setting charge current to high
+battery.charge_current = battery.CHARGE_50MA  # Setting charge current to high
 print(f"Charge current (0-50mA, 1-100mA): {battery.charge_current}")
 
 # setup bluetooth
