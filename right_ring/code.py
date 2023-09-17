@@ -90,18 +90,26 @@ while True:
         # right_BTN.update()
 
         if left_BTN.value is False:
-            mouse.click(Mouse.LEFT_BUTTON)
+            mouse.press(Mouse.LEFT_BUTTON)
             print("Left Button is pressed")
             blue_led.value = True
             green_led.value = False
-            time.sleep(0.2)
-        elif right_BTN.value is False:
-            mouse.click(Mouse.RIGHT_BUTTON)
+            time.sleep(0.1)
+        elif left_BTN.value is True:
+            mouse.release(Mouse.LEFT_BUTTON)
+            print("Left Button is released")
+        
+        if right_BTN.value is False:
+            mouse.press(Mouse.RIGHT_BUTTON)
             print("Right Button is pressed")
             blue_led.value = True
             green_led.value = False
-            time.sleep(0.2)
-        elif not scrollup_BTN.value:
+            time.sleep(0.1)
+        elif right_BTN.value is True:
+            mouse.release(Mouse.RIGHT_BUTTON)
+            print("Right Button is released")
+            
+        if not scrollup_BTN.value:
             mouse.move(wheel=1)
             print("Up Button is pressed")
             blue_led.value = True
