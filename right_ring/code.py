@@ -63,6 +63,7 @@ scrolldown_BTN.pull = Pull.UP
 
 # set mouse
 mouse = Mouse(hid.devices)
+i = 1
 
 while True:
     ble.start_advertising(advertisement, scan_response)
@@ -81,7 +82,7 @@ while True:
 
     while ble.connected:
 
-        blue_led.value = False  # turn on BLUE LED
+        blue_led.value = True  # reset LED status
         green_led.value = True  # reset LED status
         red_led.value = True  # reset LED status
 
@@ -89,28 +90,43 @@ while True:
         # left_BTN.update()
         # right_BTN.update()
 
+        if i == 80000:
+            blue_led.value = False
+            time.sleep(0.1)
+            i = 0
+        else:
+            i = i+1
+
         if left_BTN.value is False:
-            mouse.click(Mouse.LEFT_BUTTON)
+            # mouse.click(Mouse.LEFT_BUTTON)
+            mouse.press(Mouse.LEFT_BUTTON)
+            while left_BTN.value is False:
+                pass
+            mouse.release(Mouse.LEFT_BUTTON)
             print("Left Button is pressed")
-            blue_led.value = True
-            green_led.value = False
-            time.sleep(0.2)
+            # blue_led.value = True
+            # green_led.value = False
+            # time.sleep(0.2)
         elif right_BTN.value is False:
-            mouse.click(Mouse.RIGHT_BUTTON)
+            # mouse.click(Mouse.RIGHT_BUTTON)
+            mouse.press(Mouse.RIGHT_BUTTON)
+            while right_BTN.value is False:
+                pass
+            mouse.release(Mouse.RIGHT_BUTTON)
             print("Right Button is pressed")
-            blue_led.value = True
-            green_led.value = False
-            time.sleep(0.2)
+            # blue_led.value = True
+            # green_led.value = False
+            # time.sleep(0.2)
         elif not scrollup_BTN.value:
             mouse.move(wheel=1)
             print("Up Button is pressed")
-            blue_led.value = True
-            green_led.value = False
-            time.sleep(0.1)
+            # blue_led.value = True
+            # green_led.value = False
+            time.sleep(0.03)
         elif not scrolldown_BTN.value:
             mouse.move(wheel=-1)
             print("Down Button is pressed")
-            blue_led.value = True
-            green_led.value = False
-            time.sleep(0.1)
+            # blue_led.value = True
+            # green_led.value = False
+            time.sleep(0.03)
     ble.start_advertising(advertisement)
