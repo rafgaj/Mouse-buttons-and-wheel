@@ -28,4 +28,4 @@ The code was created for the need of easy mouse control with VR headset. Microco
     >**Note**: *seeed_xiao_nrf52840.py* is included in the release files but may be out of date. If you don't care about the latest versions, you can skip this step.
 
 ## Programming the microcontroller
-Copy the files: *code.py* onto the CIRCUITPY directly. Respectively for the left and right Ring. Reconnect device. Will be visible for Bluetooth and ready to connect.
+Copy the files: *code.py* onto the CIRCUITPY directly. For right controller copy `right_config.py` to the file `config.py` into CIRCUITPY. For the left controller copy `left_config.py` to `config.py` into CIRCUITPY. Reconnect device. Will be visible for Bluetooth and ready to connect.
