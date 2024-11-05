@@ -20,3 +20,4 @@ right_ring/lib/adafruit_ble/services/microbit.py
 right_ring/lib/adafruit_ble_adafruit/__init__.py
 right_ring/lib/adafruit_bus_device/__init__.py
 right_ring/lib/adafruit_register/__init__.py
+.vscode/
