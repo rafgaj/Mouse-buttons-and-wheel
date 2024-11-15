@@ -8,6 +8,7 @@ from adafruit_hid.mouse import Mouse
 from adafruit_debouncer import Button
 from digitalio import DigitalInOut, Direction, Pull
 from seeed_xiao_nrf52840 import Battery
+from adafruit_ble.services.standard import BatteryService
 
 # imports needed for bluetooth
 import adafruit_ble
@@ -110,6 +111,7 @@ log('info',f"Charge status (True-full charged, False-otherwise): {battery.charge
 log('info',f"Voltage: {battery.voltage}V")
 battery.charge_current = config['charge_current']  # Setting charge current to high
 log('info',f"Charge current (0-50mA, 1-100mA): {battery.charge_current}")
+battery_service = BatteryService()
 
 # setup bluetooth
 hid = HIDService()
@@ -227,6 +229,7 @@ while True:
             i = -1
         elif i == config['blink_interval']:
             battery_leds()
+            battery_service.level = get_batt_percent(battery.voltage)   # info from BatteryService to show icon with percentage in Windows
             LEDOFF_TIME = get_delay_time(0.1)
         elif i % 1000 == 0:
             log('debug',f"LEDOFF {LEDOFF_TIME} MONO {time.monotonic_ns()}")
