@@ -1,0 +1,16 @@
+Adafruit-Blinka==8.50.0
+adafruit-circuitpython-busdevice==5.2.10
+adafruit-circuitpython-connectionmanager==3.1.2
+adafruit-circuitpython-lsm6ds==4.5.13
+adafruit-circuitpython-register==1.10.1
+adafruit-circuitpython-requests==4.1.8
+adafruit-circuitpython-typing==1.11.1
+Adafruit-PlatformDetect==3.75.0
+Adafruit-PureIO==1.1.11
+binho-host-adapter==0.1.6
+circuitpython-seeed-xiao-nrf52840==1.0.1
+pyftdi==0.55.4
+pyserial==3.5
+pyusb==1.2.1
+sysv_ipc==1.1.0
+typing_extensions==4.12.2

@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"python.languageServer": "Pylance",
+		"circuitpython.board.version": null,
+		"python.analysis.diagnosticSeverityOverrides": {
+			"reportMissingModuleSource": "none",
+			"reportShadowedImports": "none"
+		},
+		"python.analysis.extraPaths": [
+			"/home/rafgaj/.vscode/extensions/joedevivo.vscode-circuitpython-0.2.0-linux-x64/boards/0x2886/0x0045",
+			"/home/rafgaj/.vscode/extensions/joedevivo.vscode-circuitpython-0.2.0-linux-x64/stubs",
+		],
+		"circuitpython.board.vid": "0x2886",
+		"circuitpython.board.pid": "0x0045"
+	}
+}

@@ -1,23 +1,5 @@
 
-*.mpy
-Left/lib/adafruit_ble/services/microbit.py
-Left/lib/adafruit_ble_adafruit/__init__.py
-Left/lib/adafruit_bus_device/__init__.py
-Left/lib/adafruit_register/__init__.py
-Left/seeed_xiao_nrf52840.py
-Right/lib/adafruit_ble/services/microbit.py
-Right/lib/adafruit_ble_adafruit/__init__.py
-Right/lib/adafruit_bus_device/__init__.py
-Right/lib/adafruit_register/__init__.py
-Right/seeed_xiao_nrf52840.py
-left_ring.zip
-right_ring.zip
-left_ring/lib/adafruit_ble/services/microbit.py
-left_ring/lib/adafruit_ble_adafruit/__init__.py
-left_ring/lib/adafruit_bus_device/__init__.py
-left_ring/lib/adafruit_register/__init__.py
-right_ring/lib/adafruit_ble/services/microbit.py
-right_ring/lib/adafruit_ble_adafruit/__init__.py
-right_ring/lib/adafruit_bus_device/__init__.py
-right_ring/lib/adafruit_register/__init__.py
-.vscode/
+*__init__.py
+*__init__.mpy
+
+.venv/
