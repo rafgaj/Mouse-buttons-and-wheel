@@ -119,6 +119,7 @@ advertisement.appearance = 961
 scan_response = Advertisement()
 scan_response.complete_name = config['complete_name']
 ble = adafruit_ble.BLERadio()
+ble.name = config['complete_name'] # set name after connection
 
 # set buttons
 left_BTN = digitalio.DigitalInOut(config['left_btn'])
